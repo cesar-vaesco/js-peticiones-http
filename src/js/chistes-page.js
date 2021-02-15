@@ -1,3 +1,4 @@
+import { obtenerChiste } from "./http-provider";
 
 
 
@@ -12,9 +13,7 @@ const crearChistesHtml = () => {
     <hr>
     <button class="btn btn-primary">Otro chiste!</button>
 
-    <ol class="mt-2 list-group">
-        <li class="list-group-item">....</li>
-    </ol>`;
+    <ol class="mt-2 list-group"></ol>`;
 
   const divChistes = document.createElement('div');
 
@@ -28,9 +27,22 @@ const eventos = () => {
   olListChistes = document.querySelector('ol');
   btnOtro = document.querySelector('button');
 
-  btnOtro.addEventListener('click', () =>{
-    console.log('Hola mundo...');
+  btnOtro.addEventListener('click',async () => {
+    // console.log('Hola mundo...');
+
+    dibujarChiste(await obtenerChiste() );
   });
+
+}
+
+//chiste {id, value}
+const dibujarChiste = (chiste) => {
+
+    const olItem = document.createElement('li');
+    olItem.innerHTML = `<b> ${chiste.id}</b>: ${chiste.value}`;
+    olItem.classList.add("list-group-item");
+
+    olListChistes.append(olItem);
 
 }
 
