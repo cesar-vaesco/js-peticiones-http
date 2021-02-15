@@ -9,13 +9,21 @@
 
 import * as CRUD from './js/crud-provider';
 
-CRUD.getUsuario( 1 ).then( console.log );
+CRUD.getUsuario(1).then(console.log);
 
 CRUD.createUsuario({
-    name:'César',
+    name: 'César',
     job: 'Albañil'
 }).then(console.log);
 
 CRUD.actualizarUsuario(1, {
     name: 'Verónica',
-    job: 'Comerciante'}).then(console.log);
+    job: 'Comerciante'
+}).then(console.log);
+
+
+setTimeout(() => {
+
+    CRUD.borrarUsuario(1).then(console.log);
+
+}, 2000);
