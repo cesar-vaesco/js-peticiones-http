@@ -1,3 +1,4 @@
+import { subirImagen } from "./http-provider";
 
 
 const body = document.body;
@@ -32,6 +33,10 @@ const eventos = ()=>{
 
         const file = event.target.files[0];
         console.log(file);
+        subirImagen(file).then(url => imgFoto.src = url);
+        // subirImagen( file).then (resp =>{
+        //     //console.log(resp);
+        // });
     });
 }
 
